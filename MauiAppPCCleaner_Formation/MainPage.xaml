@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
+             x:Class="MauiAppPCCleaner_Formation.MainPage"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout  BackgroundColor="Grey" Padding="10,10">
+                <Image Source="icons8_balais_100_color.png" Aspect="AspectFill" HeightRequest="60" Margin="10,0" VerticalOptions="Center"/>
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="PC Cleaner" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Margin="10,0" TextColor="LightGrey"/>
+                    <Label Text="v1.0.0" FontSize="14" VerticalOptions="Center" Margin="10,0" TextColor="LightGrey"/>
+                </VerticalStackLayout>
+                
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
