@@ -4,20 +4,64 @@
              xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
              x:DataType="viewmodels:MainViewModel"
              x:Class="MauiAppPCCleaner_Formation.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
 
-    <ScrollView>
-        <VerticalStackLayout>
-            <HorizontalStackLayout  BackgroundColor="Grey" Padding="10,10">
-                <Image Source="icons8_balais_100_color.png" Aspect="AspectFill" HeightRequest="60" Margin="10,0" VerticalOptions="Center"/>
-                <VerticalStackLayout VerticalOptions="Center">
-                    <Label Text="PC Cleaner" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" Margin="10,0" TextColor="LightGrey"/>
-                    <Label Text="v1.0.0" FontSize="14" VerticalOptions="Center" Margin="10,0" TextColor="LightGrey"/>
+    <VerticalStackLayout>
+        <Grid BackgroundColor="SlateGrey" Padding="10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="icons8_balais_100_color.png" Aspect="AspectFit" HeightRequest="50" Margin="10,0" VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" HorizontalOptions="Start">
+                <Label Text="PC Cleaner" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" TextColor="LightGrey"/>
+                <Label Text="v1.0.0" FontSize="14" VerticalOptions="Center"  TextColor="LightGrey"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout VerticalOptions="Center" Margin="80,0,0,0" Grid.Column="2" >
+                <Label Text="{Binding Os}" FontSize="13" TextColor="LightGrey"/>
+                <Label Text="{Binding Cpu}" FontSize="13" TextColor="LightGrey"/>
+                <Label Text="{Binding Gpu}" FontSize="13" TextColor="LightGrey"/>
+            </VerticalStackLayout>
+            <ImageButton Source="icons8_information_100.png" Aspect="AspectFit" HeightRequest="50" Grid.Column="3"
+                VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0" BackgroundColor="Transparent"/>
+        </Grid>
+
+        <AbsoluteLayout>
+            <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
+                    BackgroundColor="DarkGrey" MinimumWidthRequest="80">
+                <VerticalStackLayout Spacing="20" Padding="0,20,0,0">
+                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent"/>
+                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent"/>
+                    <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent"/>
+                    <ImageButton Source="icons8_engrenage_100.png" BackgroundColor="Transparent"/>
+                    <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"/>
                 </VerticalStackLayout>
-                
-            </HorizontalStackLayout>
+            </Border>
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
+                <Border BackgroundColor="LightGrey" MinimumHeightRequest="585" StrokeThickness="0">
 
-        </VerticalStackLayout>
-    </ScrollView>
+                </Border>
+            </VerticalStackLayout>
+           
+            <!--
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGrey"
+                                 MinimumHeightRequest="585">
+                
+            </VerticalStackLayout>-->
+            <!-- Footer -->
+            <Border AbsoluteLayout.LayoutBounds="0,585,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
+                    HeightRequest="60" Padding="10,0">
+                <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
+                       TextColor="LightGrey"></Label>
+            </Border>
+        </AbsoluteLayout>
+    </VerticalStackLayout>
 
 </ContentPage>
