@@ -22,7 +22,7 @@
                     HorizontalOptions="Center"/>
             <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" HorizontalOptions="Start">
                 <Label Text="PC Cleaner" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" TextColor="LightGrey"/>
-                <Label Text="v1.0.0" FontSize="14" VerticalOptions="Center"  TextColor="LightGrey"/>
+                <Label Text="{Binding Version}" FontSize="14" VerticalOptions="Center"  TextColor="LightGrey"/>
             </VerticalStackLayout>
             <VerticalStackLayout VerticalOptions="Center" Margin="80,0,0,0" Grid.Column="2" >
                 <Label Text="{Binding Os}" FontSize="13" TextColor="LightGrey"/>
@@ -30,7 +30,8 @@
                 <Label Text="{Binding Gpu}" FontSize="13" TextColor="LightGrey"/>
             </VerticalStackLayout>
             <ImageButton Source="icons8_information_100.png" Aspect="AspectFit" HeightRequest="50" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0" BackgroundColor="Transparent"/>
+                VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0" BackgroundColor="Transparent"
+                Command="{Binding ClickedInfoCommand}"/>
         </Grid>
 
         <AbsoluteLayout>

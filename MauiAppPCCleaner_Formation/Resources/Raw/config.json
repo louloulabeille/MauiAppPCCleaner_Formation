@@ -1,4 +1,6 @@
 {
-  "UrlInfo": "https://www.anthony-cardinale.fr/tools/pccleaner/",
-  "Version": "0.0.1"
+  "Config": {
+    "UrlInfo": "https://www.anthony-cardinale.fr/tools/pccleaner/",
+    "Version": "v0.0.1"
+  }
 }

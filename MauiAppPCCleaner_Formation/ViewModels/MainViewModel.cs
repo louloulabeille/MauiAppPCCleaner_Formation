@@ -1,17 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiAppPCCleaner_Formation.Infrastructure.System;
+using Microsoft.Extensions.Options;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Management;
 using System.Text;
 
 namespace MauiAppPCCleaner_Formation.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-
+        #region private readonly properties
+        private readonly IOptions<Config> _config;
+        #endregion
 
         #region public properties 
         [ObservableProperty]
@@ -22,15 +24,21 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         [ObservableProperty]
         public partial string Gpu { get; set; }
+
+        [ObservableProperty]
+        public partial string Version { get; set; }
         #endregion
 
         #region Constructeur
-        public MainViewModel()
+        public MainViewModel(IOptions<Config> config )
         {
-            InfoSystem info = new();
-            Os = info.Os ?? string.Empty;
-            Cpu = info.Cpu ?? string.Empty;
-            Gpu = info.Gpu ?? string.Empty;
+            _config = config;
+            
+            Os = InfoSystem.GetVersion();
+            Cpu = string.Empty;
+            Gpu = string.Empty;
+
+            Version = _config.Value.Version;
         }
         #endregion
 
@@ -43,7 +51,16 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [RelayCommand]
         public async Task ClickedInfo()
         {
-            await Browser.Default.OpenAsync("", BrowserLaunchMode.SystemPreferred);
+            try
+            {
+                Uri url = new(_config.Value.UrlInfo);
+                await Browser.Default.OpenAsync(url, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
         #endregion
