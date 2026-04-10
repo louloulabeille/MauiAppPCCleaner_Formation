@@ -46,7 +46,7 @@
                 </VerticalStackLayout>
             </Border>
             <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
-                <Border BackgroundColor="LightGrey" MinimumHeightRequest="585" StrokeThickness="0">
+                <Border BackgroundColor="LightGrey" MinimumHeightRequest="485" StrokeThickness="0">
 
                 </Border>
             </VerticalStackLayout>
@@ -57,7 +57,7 @@
                 
             </VerticalStackLayout>-->
             <!-- Footer -->
-            <Border AbsoluteLayout.LayoutBounds="0,585,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
+            <Border AbsoluteLayout.LayoutBounds="0,485,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
                     HeightRequest="60" Padding="10,0">
                 <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
                        TextColor="LightGrey"></Label>
