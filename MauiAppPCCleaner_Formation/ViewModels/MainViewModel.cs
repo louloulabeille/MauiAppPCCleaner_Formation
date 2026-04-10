@@ -35,8 +35,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             _config = config;
             
             Os = InfoSystem.GetVersion();
-            Cpu = string.Empty;
-            Gpu = string.Empty;
+            Cpu = InfoSystem.GetCpu();
+            Gpu = InfoSystem.GetGpu();
 
             Version = _config.Value.Version;
         }
