@@ -114,6 +114,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 };
                 string json = JsonSerializer.Serialize(options);
                 if (_config.Value.SaveOptionNettoyage is null) return;
+                // -- FileSystem.AppDataDirectory sous windows -> C:\Users\loulo\AppData\Local\User Name\com.companyname.mauiapppccleaner_formation\Data 
                 string path = Path.Combine(FileSystem.AppDataDirectory, _config.Value.SaveOptionNettoyage);
 
                 File.WriteAllText(path, json);
