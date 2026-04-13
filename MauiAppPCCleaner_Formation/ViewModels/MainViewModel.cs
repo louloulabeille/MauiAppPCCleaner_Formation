@@ -88,6 +88,23 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             }
 
         }
+
+
+        /// <summary>
+        /// method de nettoyage relié au bouton click nettoyage
+        /// </summary>
+        [RelayCommand]
+        public void ClickedNettoyage()
+        {
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         #endregion
 
         #region private methods
@@ -127,7 +144,10 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         }
 
-        public async void LoadOptionsNettoyage()
+        /// <summary>
+        /// Méthod qui lit le fichier json des options de nettoyage et l'affiche pour dans le menu
+        /// </summary>
+        private async void LoadOptionsNettoyage()
         {
             try
             {
@@ -173,7 +193,12 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #endregion
 
 
-        #region partial method lors de la modification de la checkbox des vignettes
+        #region partial method 
+        /// <summary>
+        /// avec toolkit pour eviter event OnEventchanging il est possible de faire appel à cette méthod
+        /// On{nom de la propriété suivi}Changed
+        /// </summary>
+        /// <param name="value">correspond Ischecked de la check box</param>
         partial void OnIsCheckedVignettesChanged(bool value)
         {
             if(!_IsCharging) SaveOptionsNettoyage();

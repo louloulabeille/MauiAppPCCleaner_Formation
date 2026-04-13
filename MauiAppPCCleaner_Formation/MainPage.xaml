@@ -66,8 +66,8 @@
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="8*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ScrollView BackgroundColor="Grey">
-                            <StackLayout Grid.Column="0" >
+                        <ScrollView BackgroundColor="Grey" Grid.Column="0">
+                            <StackLayout  >
                                 <Label Text="Fichiers à nettoyer:" TextColor="Black" FontSize="12" FontAttributes="Bold"
                                        VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,5"/>
                                 <HorizontalStackLayout>
@@ -122,8 +122,20 @@
                                 </HorizontalStackLayout>
                             </StackLayout>
                         </ScrollView>
+                        <Border StrokeThickness="0" BackgroundColor="White" MinimumWidthRequest="600" Grid.Column="1">
+                            <ScrollView>
+                                <VerticalStackLayout Padding="20,0,20,0">
+                                    <Label Margin="0,20"  Text="Nettoyage du disque dur" TextColor="Black" FontSize="29" FontAttributes="Bold"/>
+                                    <Line  Stroke="Black" X2="5000" ></Line>
+                                    <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
+                                            Command="{Binding ClickedNettoyageCommand}"></Button>
+                                    <Label TextColor="Black"  Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </Border>
                     </Grid>
                 </Border>
+                
             </VerticalStackLayout>
            
             <!--
