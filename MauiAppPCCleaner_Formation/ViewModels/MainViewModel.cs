@@ -17,7 +17,17 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         private bool _IsCharging = true;
         #endregion
 
-        #region public properties 
+        #region public properties
+        // -- propriété de la progress bar
+        [ObservableProperty]
+        public partial bool IsVisibleProgressBar { get; set; } = false;
+        [ObservableProperty]
+        public partial bool IsEnableProgressBar { get; set; } = false;
+        [ObservableProperty]
+        public partial int ProgressBarValue { get; set; } = 0
+
+
+        // -- information du header
         [ObservableProperty]
         public partial string Os { get; set; }
 
