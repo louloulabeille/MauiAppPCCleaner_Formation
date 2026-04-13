@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodels:MainViewModel"
              x:Class="MauiAppPCCleaner_Formation.MainPage"
+             
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
 
@@ -69,43 +71,53 @@
                                 <Label Text="Fichiers à nettoyer:" TextColor="Black" FontSize="12" FontAttributes="Bold"
                                        VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,5"/>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Cache des vignettes -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedVignettes}" />
                                     <Label Text="Cache des vignettes" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Cache navigateur -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedNavigateur}" />
                                     <Label Text="Cache navigateur" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Fichiers temporaires -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedTemporaires}"/>
                                     <Label Text="Fichiers temporaires" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Vider la corbeille -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedCorbeille}"/>
                                     <Label Text="Vider la corbeille" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Fichiers Win update -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWinUpdate}"/>
                                     <Label Text="Fichiers Win update" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
-                                </HorizontalStackLayout>
+                                </HorizontalStackLayout> 
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Optimisation livraison -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedLivraison}"/>
                                     <Label Text="Optimisation livraison" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Rapport d'erreurs -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedErreurs}"/>
                                     <Label Text="Rapport d'erreurs" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Log Windows -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWindows}" />
                                     <Label Text="Log Windows" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Cache shaders -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedShaders}"/>
                                     <Label Text="Cache shaders" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-                                    <CheckBox VerticalOptions="Center"/>
+                                    <!-- Fichier Windows.old -->
+                                    <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWindowsOld}"/>
                                     <Label Text="Fichier Windows.old" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
                             </StackLayout>
@@ -127,5 +139,11 @@
             </Border>
         </AbsoluteLayout>
     </VerticalStackLayout>
-
+    <!--<ContentPage.Behaviors>
+        EventName="Disappearing"
+        <toolkit:EventToCommandBehavior
+            EventName="de"
+            Command="{Binding SaveOptionsNettoyageCommand}"
+            />
+    </ContentPage.Behaviors>-->
 </ContentPage>

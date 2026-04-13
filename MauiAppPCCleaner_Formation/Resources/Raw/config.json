@@ -1,6 +1,7 @@
 {
   "Config": {
     "UrlInfo": "https://www.anthony-cardinale.fr/tools/pccleaner/",
-    "Version": "v0.0.1"
+    "Version": "v0.0.1",
+    "SaveOptionNettoyage" : "OptionsNettoyage.json"
   }
 }
