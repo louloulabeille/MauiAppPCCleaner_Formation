@@ -78,7 +78,6 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                 Console.WriteLine(ex.Message);
                 return "Error system Gpu";
             }
-             return "Error system Gpu";
         }
         #endregion
 

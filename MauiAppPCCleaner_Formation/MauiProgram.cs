@@ -27,8 +27,8 @@ namespace MauiAppPCCleaner_Formation
 #endif
 
             // -- ajout par injection de dépendance des viewmodels et des pages
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainViewModel>();
             
 
             return builder.Build();

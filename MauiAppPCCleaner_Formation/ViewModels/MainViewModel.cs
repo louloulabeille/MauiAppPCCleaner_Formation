@@ -27,6 +27,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         [ObservableProperty]
         public partial string Version { get; set; }
+
+
         #endregion
 
         #region Constructeur
@@ -62,7 +64,6 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             }
             
         }
-
         #endregion
 
     }
