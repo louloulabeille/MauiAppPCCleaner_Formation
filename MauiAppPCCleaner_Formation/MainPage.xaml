@@ -9,8 +9,13 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
 
-    <VerticalStackLayout>
-        <!-- Barre de menu du haut -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <!-- Barre de menu du haut -->
         <Grid BackgroundColor="SlateGrey" Padding="10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -37,14 +42,14 @@
                 Command="{Binding ClickedInfoCommand}"/>
         </Grid>
 
-        <AbsoluteLayout>
+        <AbsoluteLayout Grid.Row="1">
             <!-- bar de menu de gauche -->
             <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
                     BackgroundColor="DarkGrey" MinimumWidthRequest="80">
                 <VerticalStackLayout Padding="0,20,0,0">
                     <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent"/>
                     <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0"/>
+                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedRamCommand}"/>
                     <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                     <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0"/>
                     <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
@@ -56,9 +61,9 @@
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
-            <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
-                <Border BackgroundColor="LightGrey" MinimumHeightRequest="485" StrokeThickness="0">
-                    <Grid >
+            <!--<VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">-->
+                <!--<Border BackgroundColor="LightGrey" MinimumHeightRequest="485" StrokeThickness="0" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">-->
+                <Grid BackgroundColor="LightGrey" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
@@ -66,8 +71,8 @@
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="8*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ScrollView BackgroundColor="Grey" Grid.Column="0">
-                            <StackLayout  >
+                        <ScrollView BackgroundColor="Grey" Grid.Column="0" Orientation="Vertical" VerticalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Vertical" >
                                 <Label Text="Fichiers à nettoyer:" TextColor="Black" FontSize="12" FontAttributes="Bold"
                                        VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,5"/>
                                 <HorizontalStackLayout>
@@ -122,13 +127,13 @@
                                 </HorizontalStackLayout>
                             </StackLayout>
                         </ScrollView>
-                        <Border StrokeThickness="0" BackgroundColor="White" MinimumWidthRequest="600" Grid.Column="1">
-                            <ScrollView>
+                        <ScrollView Grid.Column="1" VerticalScrollBarVisibility="Never" Orientation="Vertical">
+                            <Border StrokeThickness="0" BackgroundColor="White" MinimumWidthRequest="600" >
                                 <VerticalStackLayout Padding="20,0,20,0">
                                     <Label Margin="0,20"  Text="Nettoyage du disque dur" TextColor="Black" FontSize="29" FontAttributes="Bold"/>
                                     <ProgressBar IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}" 
                                                  Progress="{Binding ProgressBarValue}" HeightRequest="10" ScaleY="4"
-                                                 ProgressColor="LawnGreen" BackgroundColor="White"></ProgressBar>
+                                                 ProgressColor="LawnGreen" BackgroundColor="White" Margin="0,0,0,15"></ProgressBar>
                                     <Line  Stroke="Black" X2="5000" ></Line>
                                     <Label IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}"
                                            FontAttributes="Bold" TextColor="Black" Text="{Binding TextRecap}"/>
@@ -149,22 +154,27 @@
                                     <!-- Button nettoyage -->
                                     <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
                                             Command="{Binding ClickedNettoyageCommand}"></Button>
-                                    <Label TextColor="Black"  Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
+                                    <Label TextColor="Black" IsVisible="{Binding IsVisibleInfo}"
+                                           Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
                                 </VerticalStackLayout>
-                            </ScrollView>
-                        </Border>
+                            </Border>
+                        </ScrollView>
                     </Grid>
-                </Border>
+                <!--</Border>-->
 
-            </VerticalStackLayout>
+            <!--</VerticalStackLayout>-->
             <!-- Footer -->
-            <Border AbsoluteLayout.LayoutBounds="0,485,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
-                    HeightRequest="60" Padding="10,0">
+            <!--<Border AbsoluteLayout.LayoutBounds="1,1,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
+                    HeightRequest="60" Padding="10,0" VerticalOptions="End">
                 <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
                        TextColor="LightGrey"></Label>
-            </Border>
+            </Border>-->
         </AbsoluteLayout>
-    </VerticalStackLayout>
+        <Border Grid.Row="2" BackgroundColor="SlateGrey" HeightRequest="60" Padding="10,0" VerticalOptions="End">
+            <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
+           TextColor="LightGrey"></Label>
+        </Border>
+    </Grid>
     <!--<ContentPage.Behaviors>
         EventName="Disappearing"
         <toolkit:EventToCommandBehavior

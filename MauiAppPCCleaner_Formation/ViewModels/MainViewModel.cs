@@ -26,13 +26,17 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [ObservableProperty]
         public partial bool IsEnableProgressBar { get; set; } = false;
         [ObservableProperty]
-        public partial int ProgressBarValue { get; set; } = 0;
+        public partial double ProgressBarValue { get; set; } = 0d;
 
         // -- propriété pour l'affichage du récapitulatif de nettoyage
         [ObservableProperty]
         public partial bool IsVisibleRecap { get; set; } = false;
         [ObservableProperty]
         public partial bool IsEnableRecap { get; set; } = false;
+
+        // -- propriété pour l'affichage du message info en dessous du button nettoyer
+        [ObservableProperty]
+        public partial bool IsVisibleInfo { get; set; } = true;
 
         // -- information du header
         [ObservableProperty]
@@ -127,10 +131,89 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             {
                 IsVisibleProgressBar = true;
                 IsEnableProgressBar = true;
-                TextRecap = "Test " + IsCheckedVignettes + " " + IsCheckedNavigateur + " " + IsCheckedTemporaires + " " + IsCheckedCorbeille
-                    + " " + IsCheckedWinUpdate + " " + IsCheckedLivraison + " " + IsCheckedErreurs + " " + IsCheckedWindows + " " + IsCheckedShaders
-                    + " " + IsCheckedWindowsOld;
 
+                IsVisibleInfo = false;
+                Rapports.Clear();
+                ProgressBarValue = 0d;
+                //CleanSystem clean = new();
+
+
+                if (IsCheckedVignettes)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Cache des vignettes", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if (IsCheckedNavigateur)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Cache navigateur", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if (IsCheckedTemporaires)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Fichiers temporaires", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+
+                if (IsCheckedCorbeille)
+                {
+                    Rapport rapport = CleanSystem.CleanCorbeille();
+                    Rapports.Add(rapport);
+                }
+                else Rapports.Add(new() { Title = "Vider la corbeille", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+
+                if (IsCheckedWinUpdate)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Fichiers Win update", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if(IsCheckedLivraison)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Optimisation livraison", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if (IsCheckedErreurs)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Rapport d'erreurs", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if (IsCheckedWindows)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Log Windows", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if(IsCheckedShaders)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Cache shaders", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                if(IsCheckedWindowsOld)
+                {
+
+                }
+                else Rapports.Add(new() { Title = "Fichier Windows.old", Message = "Ignoré" });
+                ProgressBarValue += 0.1d;
+
+                // -- affichage recap 
+                IsVisibleRecap = true;
+                IsEnableRecap = true;
 
             }
             catch (Exception ex)
@@ -138,6 +221,13 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 Console.WriteLine(ex.Message);
             }
         }
+
+        [RelayCommand]
+        public async Task ClickedRam()
+        {
+            //await Shell.Current.GoToAsync("Test");
+        }
+
         #endregion
 
         #region private methods
@@ -145,7 +235,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         /// Methode qui enregistre les informations du système en mémoire en sérialization d'un object
         /// </summary>
         //[RelayCommand]
-        public void SaveOptionsNettoyage(string name, bool valeur)
+        private static void SaveOptionsNettoyage(string name, bool valeur)
         {
             try
             {
@@ -259,6 +349,11 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         partial void OnIsCheckedLivraisonChanged(bool value)
         {
             if (!_IsCharging) SaveOptionsNettoyage("IsCheckedLivraison", IsCheckedLivraison);
+        }
+
+        partial void OnIsCheckedWindowsChanged(bool value)
+        {
+            if (!_IsCharging) SaveOptionsNettoyage("IsCheckedWindows", IsCheckedWindows);
         }
 
         partial void OnIsCheckedErreursChanged(bool value)
