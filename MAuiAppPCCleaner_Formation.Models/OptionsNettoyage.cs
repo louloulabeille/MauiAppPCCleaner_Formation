@@ -1,9 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MauiAppPCCleaner_Formation.Infrastructure.System
+﻿namespace MAuiAppPCCleaner_Formation.Models
 {
     public class OptionsNettoyage
     {

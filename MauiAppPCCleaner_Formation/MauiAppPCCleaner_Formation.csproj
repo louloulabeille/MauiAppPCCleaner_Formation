@@ -78,4 +78,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\MAuiAppPCCleaner_Formation.Models\MAuiAppPCCleaner_Formation.Models.csproj" />
+	</ItemGroup>
+
 </Project>

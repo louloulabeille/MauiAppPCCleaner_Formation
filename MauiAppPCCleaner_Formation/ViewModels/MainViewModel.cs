@@ -1,10 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiAppPCCleaner_Formation.Infrastructure.System;
+using MAuiAppPCCleaner_Formation.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
 
@@ -25,6 +27,12 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         public partial bool IsEnableProgressBar { get; set; } = false;
         [ObservableProperty]
         public partial int ProgressBarValue { get; set; } = 0;
+
+        // -- propriété pour l'affichage du récapitulatif de nettoyage
+        [ObservableProperty]
+        public partial bool IsVisibleRecap { get; set; } = false;
+        [ObservableProperty]
+        public partial bool IsEnableRecap { get; set; } = false;
 
         // -- information du header
         [ObservableProperty]
@@ -64,6 +72,9 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         // -- texte affiché après le nettoyage avec le récapitulatif
         [ObservableProperty]
         public partial string TextRecap { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial ObservableCollection<Rapport> Rapports { get; set; } = [];
         #endregion
 
         #region Constructeur

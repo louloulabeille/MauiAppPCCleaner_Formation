@@ -132,6 +132,19 @@
                                     <Line  Stroke="Black" X2="5000" ></Line>
                                     <Label IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}"
                                            FontAttributes="Bold" TextColor="Black" Text="{Binding TextRecap}"/>
+                                    <VerticalStackLayout IsVisible="{Binding IsVisibleRecap}" IsEnabled="{Binding IsEnableRecap}">
+                                        <Label Text="--- rapport détaillé des fichiers supprimés ---" Margin="10,0,0,0" TextColor="Black" FontSize="16"/>
+                                        <CollectionView ItemsSource="{Binding Rapports}">
+                                            <CollectionView.ItemTemplate x:DataType="models:Rapports">
+                                                <DataTemplate>
+                                                    <VerticalStackLayout>
+                                                        <Label Text="{Binding Title}" TextColor="Black"/>
+                                                        <Label Text="{Binding Message}" TextColor="Black"/>
+                                                    </VerticalStackLayout>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </VerticalStackLayout>
                                     <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
                                             Command="{Binding ClickedNettoyageCommand}"></Button>
                                     <Label TextColor="Black"  Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
