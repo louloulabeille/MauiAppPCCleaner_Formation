@@ -135,7 +135,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 IsVisibleInfo = false;
                 Rapports.Clear();
                 ProgressBarValue = 0d;
-                //CleanSystem clean = new();
+                TextRecap = string.Empty;
+                CleanSystem clean = new();
 
 
                 if (IsCheckedVignettes)
@@ -154,7 +155,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
                 if (IsCheckedTemporaires)
                 {
-
+                    Rapports.Add(CleanSystem.CleanFichierTemporaire());
                 }
                 else Rapports.Add(new() { Title = "Fichiers temporaires", Message = "Ignoré" });
                 ProgressBarValue += 0.1d;
@@ -162,8 +163,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
                 if (IsCheckedCorbeille)
                 {
-                    Rapport rapport = CleanSystem.CleanCorbeille();
-                    Rapports.Add(rapport);
+                    Rapports.Add(CleanSystem.CleanCorbeille());
                 }
                 else Rapports.Add(new() { Title = "Vider la corbeille", Message = "Ignoré" });
                 ProgressBarValue += 0.1d;
@@ -171,7 +171,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
                 if (IsCheckedWinUpdate)
                 {
-
+                    Rapports.Add(CleanSystem.CleanWinUpdate());
                 }
                 else Rapports.Add(new() { Title = "Fichiers Win update", Message = "Ignoré" });
                 ProgressBarValue += 0.1d;
@@ -185,14 +185,14 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
                 if (IsCheckedErreurs)
                 {
-
+                    Rapports.Add(CleanSystem.CleanRapportErreurs());
                 }
                 else Rapports.Add(new() { Title = "Rapport d'erreurs", Message = "Ignoré" });
                 ProgressBarValue += 0.1d;
 
                 if (IsCheckedWindows)
                 {
-
+                    Rapports.Add(CleanSystem.CleanLogsWindows());
                 }
                 else Rapports.Add(new() { Title = "Log Windows", Message = "Ignoré" });
                 ProgressBarValue += 0.1d;
@@ -214,6 +214,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 // -- affichage recap 
                 IsVisibleRecap = true;
                 IsEnableRecap = true;
+
+                TextRecap = $"Espace {CleanSystem.GetTaille()} ko";
 
             }
             catch (Exception ex)
