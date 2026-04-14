@@ -24,8 +24,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [ObservableProperty]
         public partial bool IsEnableProgressBar { get; set; } = false;
         [ObservableProperty]
-        public partial int ProgressBarValue { get; set; } = 0
-
+        public partial int ProgressBarValue { get; set; } = 0;
 
         // -- information du header
         [ObservableProperty]
@@ -40,7 +39,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [ObservableProperty]
         public partial string Version { get; set; }
 
-        // -- checkox des options de nétoyage
+        // -- checkox des options de nettoyage
         [ObservableProperty]
         public partial bool IsCheckedVignettes { get; set; }
         [ObservableProperty]
@@ -61,6 +60,10 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         public partial bool IsCheckedShaders { get; set; }
         [ObservableProperty]
         public partial bool IsCheckedWindowsOld { get; set; }
+
+        // -- texte affiché après le nettoyage avec le récapitulatif
+        [ObservableProperty]
+        public partial string TextRecap { get; set; } = string.Empty;
         #endregion
 
         #region Constructeur
@@ -75,6 +78,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
             LoadOptionsNettoyage();
 
+            // - Pour éviter que l'enregistrement se fasse lors du chargement initial des checkbox
+            _IsCharging = false;
         }
         #endregion
 
@@ -119,7 +124,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         #region private methods
         /// <summary>
-        /// Methode qui enregistre les informations du système en mémoire
+        /// Methode qui enregistre les informations du système en mémoire en sérialization d'un object
         /// </summary>
         //[RelayCommand]
         public async Task SaveOptionsNettoyage()
@@ -192,7 +197,6 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                     IsCheckedShaders    = true;
                     IsCheckedWindowsOld = true;
                 }
-                _IsCharging = false;
             }
             catch (Exception ex)
             {
@@ -206,7 +210,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #region partial method 
         /// <summary>
         /// avec toolkit pour eviter event OnEventchanging il est possible de faire appel à cette méthod
-        /// On{nom de la propriété suivi}Changed
+        /// On{nom de la propriété suivi}Changed / 
         /// </summary>
         /// <param name="value">correspond Ischecked de la check box</param>
         partial void OnIsCheckedVignettesChanged(bool value)

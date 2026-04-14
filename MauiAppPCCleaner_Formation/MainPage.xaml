@@ -126,8 +126,12 @@
                             <ScrollView>
                                 <VerticalStackLayout Padding="20,0,20,0">
                                     <Label Margin="0,20"  Text="Nettoyage du disque dur" TextColor="Black" FontSize="29" FontAttributes="Bold"/>
-                                    <ProgressBar IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}" Progress="{Binding ProgressBarValue}"></ProgressBar>
+                                    <ProgressBar IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}" 
+                                                 Progress="{Binding ProgressBarValue}" HeightRequest="10" ScaleY="4"
+                                                 ProgressColor="LawnGreen" BackgroundColor="White"></ProgressBar>
                                     <Line  Stroke="Black" X2="5000" ></Line>
+                                    <Label IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}"
+                                           FontAttributes="Bold" TextColor="Black" Text="{Binding TextRecap}"/>
                                     <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
                                             Command="{Binding ClickedNettoyageCommand}"></Button>
                                     <Label TextColor="Black"  Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
