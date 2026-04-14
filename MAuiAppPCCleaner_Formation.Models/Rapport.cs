@@ -1,6 +1,6 @@
 ﻿
 
-namespace MAuiAppPCCleaner_Formation.Models
+namespace MauiAppPCCleaner_Formation.Models
 {
     public class Rapport
     {

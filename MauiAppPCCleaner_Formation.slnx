@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="MAuiAppPCCleaner_Formation.Models/MAuiAppPCCleaner_Formation.Models.csproj" Id="38feac76-ba71-4579-865b-007becaa62b9" />
+  <Project Path="MAuiAppPCCleaner_Formation.Models/MauiAppPCCleaner_Formation.Models.csproj" Id="38feac76-ba71-4579-865b-007becaa62b9" />
   <Project Path="MauiAppPCCleaner_Formation/MauiAppPCCleaner_Formation.csproj" />
 </Solution>

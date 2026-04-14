@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiAppPCCleaner_Formation.Models;assembly=MauiAppPCCleaner_Formation.Models"
              xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodels:MainViewModel"
              x:Class="MauiAppPCCleaner_Formation.MainPage"
-             
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
 
@@ -58,7 +58,7 @@
             <!-- Fenêtre principale -->
             <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
                 <Border BackgroundColor="LightGrey" MinimumHeightRequest="485" StrokeThickness="0">
-                    <Grid > 
+                    <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
@@ -94,7 +94,7 @@
                                     <!-- Fichiers Win update -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWinUpdate}"/>
                                     <Label Text="Fichiers Win update" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
-                                </HorizontalStackLayout> 
+                                </HorizontalStackLayout>
                                 <HorizontalStackLayout>
                                     <!-- Optimisation livraison -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedLivraison}"/>
@@ -133,18 +133,20 @@
                                     <Label IsVisible="{Binding IsVisibleProgressBar}" IsEnabled="{Binding IsEnableProgressBar}"
                                            FontAttributes="Bold" TextColor="Black" Text="{Binding TextRecap}"/>
                                     <VerticalStackLayout IsVisible="{Binding IsVisibleRecap}" IsEnabled="{Binding IsEnableRecap}">
-                                        <Label Text="--- rapport détaillé des fichiers supprimés ---" Margin="10,0,0,0" TextColor="Black" FontSize="16"/>
+                                        <Label Text="--- rapport détaillé des fichiers supprimés ---" Margin="10,30,0,10" 
+                                               TextColor="Black" FontSize="16"/>
                                         <CollectionView ItemsSource="{Binding Rapports}">
-                                            <CollectionView.ItemTemplate x:DataType="models:Rapports">
-                                                <DataTemplate>
-                                                    <VerticalStackLayout>
-                                                        <Label Text="{Binding Title}" TextColor="Black"/>
-                                                        <Label Text="{Binding Message}" TextColor="Black"/>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="models:Rapport">
+                                                    <VerticalStackLayout >
+                                                        <Label Text="{Binding Title}" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
+                                                        <Label Text="{Binding Message}" TextColor="Black" Margin="0,0,0,10"/>
                                                     </VerticalStackLayout>
                                                 </DataTemplate>
                                             </CollectionView.ItemTemplate>
                                         </CollectionView>
                                     </VerticalStackLayout>
+                                    <!-- Button nettoyage -->
                                     <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
                                             Command="{Binding ClickedNettoyageCommand}"></Button>
                                     <Label TextColor="Black"  Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
@@ -153,14 +155,8 @@
                         </Border>
                     </Grid>
                 </Border>
-                
+
             </VerticalStackLayout>
-           
-            <!--
-            <VerticalStackLayout AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="LightGrey"
-                                 MinimumHeightRequest="585">
-                
-            </VerticalStackLayout>-->
             <!-- Footer -->
             <Border AbsoluteLayout.LayoutBounds="0,485,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="SlateGrey"
                     HeightRequest="60" Padding="10,0">

@@ -79,7 +79,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MAuiAppPCCleaner_Formation.Models\MAuiAppPCCleaner_Formation.Models.csproj" />
+	  <ProjectReference Include="..\MAuiAppPCCleaner_Formation.Models\MauiAppPCCleaner_Formation.Models.csproj" />
 	</ItemGroup>
 
 </Project>
