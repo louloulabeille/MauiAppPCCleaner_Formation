@@ -16,7 +16,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
         #endregion
 
         #region public properties
-        private static long Taille = 0;  // -- en ko 
+        private static long Taille = 0;  // -- en bits
         #endregion
 
         #region import Dll c++ de windows pour vider la corbeille
@@ -249,7 +249,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                 result += RepSize(directory);
             }
 
-            return result/8000;
+            return result;
         }
 
         #endregion

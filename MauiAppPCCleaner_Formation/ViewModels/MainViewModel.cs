@@ -215,7 +215,9 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 IsVisibleRecap = true;
                 IsEnableRecap = true;
 
-                TextRecap = $"Espace {CleanSystem.GetTaille()} ko";
+                long taille = CleanSystem.GetTaille() / 1000000;
+                if (taille <= 0) taille = 0;
+                TextRecap = $"Espace gagné {taille} Mbits";
 
             }
             catch (Exception ex)
