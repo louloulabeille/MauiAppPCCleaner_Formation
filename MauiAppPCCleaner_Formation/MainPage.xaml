@@ -154,8 +154,8 @@
                                     <!-- Button nettoyage -->
                                     <Button Margin="0,20" BackgroundColor="SlateGrey" Text="Nettoyer" TextColor="LightGrey"
                                             Command="{Binding ClickedNettoyageCommand}"></Button>
-                                    <Label TextColor="Black" IsVisible="{Binding IsVisibleInfo}"
-                                           Text="Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche "></Label>
+                                    <Label TextColor="{Binding TextColorInfos}" IsVisible="{Binding IsVisibleInfo}"
+                                           Text="{Binding TextInfos}"></Label>
                                 </VerticalStackLayout>
                             </Border>
                         </ScrollView>

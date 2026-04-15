@@ -19,7 +19,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         private readonly bool _IsCharging = true;
         #endregion
 
-        #region public properties
+        #region public properties ObservableProperty
         // -- initialisation de certaines options de nettoyage
         [ObservableProperty]
         public partial bool IsVisibleOptions { get; set; } = false;
@@ -44,6 +44,20 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [ObservableProperty]
         public partial bool IsVisibleInfo { get; set; } = true;
 
+        // -- texte affiché après le nettoyage avec le récapitulatif
+        [ObservableProperty]
+        public partial string TextRecap { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial ObservableCollection<Rapport> Rapports { get; set; } = [];
+
+        // -- Message Label infos
+        [ObservableProperty]
+        public partial string TextInfos { get; set; } = "Supprimer les fichiers inutiles de votre disques durs en cliquant sur le bouton nettoyer. Sélectionnez les options souhaitées sur le nemu de gauche ";
+        [ObservableProperty]
+        public partial Color TextColorInfos { get; set; } = Colors.Black;
+        #endregion 
+        #region public properties informations du header ObservableProperty
         // -- information du header
         [ObservableProperty]
         public partial string Os { get; set; }
@@ -56,7 +70,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         [ObservableProperty]
         public partial string Version { get; set; }
-
+        #endregion 
+        #region public properties options de nettoyage ObservableProperty
         // -- checkox des options de nettoyage
         [ObservableProperty]
         public partial bool IsCheckedVignettes { get; set; }
@@ -78,14 +93,9 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         public partial bool IsCheckedShaders { get; set; }
         [ObservableProperty]
         public partial bool IsCheckedWindowsOld { get; set; }
-
-        // -- texte affiché après le nettoyage avec le récapitulatif
-        [ObservableProperty]
-        public partial string TextRecap { get; set; } = string.Empty;
-
-        [ObservableProperty]
-        public partial ObservableCollection<Rapport> Rapports { get; set; } = [];
         #endregion
+
+        
 
         #region Constructeur
         public MainViewModel(IOptions<Config> config)
@@ -341,7 +351,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             MiseAJour miseAJour = new(_config);
             if (!miseAJour.Equals(_config.Value.Version))
             {
-
+                TextInfos = "Maj dispo !";
+                TextColorInfos = Colors.Red;
             }
         }
 
