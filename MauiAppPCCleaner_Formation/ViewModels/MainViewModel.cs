@@ -20,6 +20,12 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #endregion
 
         #region public properties
+        // -- initialisation de certaines options de nettoyage
+        [ObservableProperty]
+        public partial bool IsVisibleOptions { get; set; } = false;
+        [ObservableProperty]
+        public partial bool IsEnableOptions { get; set; } = false;
+
         // -- propriété de la progress bar
         [ObservableProperty]
         public partial bool IsVisibleProgressBar { get; set; } = false;
@@ -136,8 +142,6 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 Rapports.Clear();
                 ProgressBarValue = 0d;
                 TextRecap = string.Empty;
-                CleanSystem clean = new();
-
 
                 if (IsCheckedVignettes)
                 {
@@ -225,11 +229,20 @@ namespace MauiAppPCCleaner_Formation.ViewModels
                 Console.WriteLine(ex.Message);
             }
         }
+        #endregion
 
+        #region command clicked button menu
         [RelayCommand]
-        public async Task ClickedRam()
+        public async Task ClickedWindowsRam()
         {
             //await Shell.Current.GoToAsync("Test");
+        }
+
+        [RelayCommand]
+        public async Task ClickedWindowsNettoyage()
+        {
+            // recharge la page ne pas faire Current.GoToSync sinon plantage il s'appelle lui même
+            await Shell.Current.Navigation.PushAsync(new MainPage(new MainViewModel(_config)));
         }
 
         #endregion
@@ -238,7 +251,6 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         /// <summary>
         /// Methode qui enregistre les informations du système en mémoire en sérialization d'un object
         /// </summary>
-        //[RelayCommand]
         private static void SaveOptionsNettoyage(string name, bool valeur)
         {
             try

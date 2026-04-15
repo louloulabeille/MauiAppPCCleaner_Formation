@@ -16,7 +16,8 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
         #endregion
 
         #region public properties
-        private static long Taille = 0;  // -- en bits
+        private static long _taille = 0;  // -- en Mbits
+        private const long _type = (long)TypeTaille.Mbits;
         #endregion
 
         #region import Dll c++ de windows pour vider la corbeille
@@ -68,7 +69,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                     };
 
                     Delete(directory, ref rapportDirectory);
-                    Taille += rapportDirectory.Taille;
+                    _taille += rapportDirectory.Taille;
                     return new Rapport() { Title = "Fichiers temporaires", Message = rapportDirectory.ToString()};
                 }
 
@@ -108,7 +109,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                     };
 
                     Delete(directory, ref rapportDirectory);
-                    Taille += rapportDirectory.Taille;
+                    _taille += rapportDirectory.Taille;
                     return new Rapport() { Title = "Fichiers Win update", Message = rapportDirectory.ToString() };
                 }
 
@@ -146,7 +147,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                     };
 
                     Delete(directory, ref rapportDirectory);
-                    Taille += rapportDirectory.Taille;
+                    _taille += rapportDirectory.Taille;
                     return new Rapport() { Title = "Rapport d'erreurs", Message = rapportDirectory.ToString() };
                 }
 
@@ -184,7 +185,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                     };
 
                     Delete(directory, ref rapportDirectory);
-                    Taille += rapportDirectory.Taille;
+                    _taille += rapportDirectory.Taille;
                     return new Rapport() { Title = "Log Windows", Message = rapportDirectory.ToString() };
                 }
 
@@ -249,7 +250,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
                 result += RepSize(directory);
             }
 
-            return result;
+            return result/_type;
         }
 
         #endregion
@@ -262,7 +263,7 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
         /// <returns></returns>
         public static long GetTaille()
         {
-            return Taille;
+            return _taille;
         }
 
         #endregion
@@ -279,6 +280,22 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
         SHERB_NOCONFIRMATION = 0x00000001, // No empty confirmation
         SHERB_NOPROGRESSUI = 0x00000002, // No progress tracking
         SHERB_NOSOUND = 0x00000004 // No sound on completion
+    }
+    #endregion
+
+    #region Enumerable type taille retour
+    /// <summary>
+    /// selon la division on convertie les bits en ce que vous voulez
+    /// </summary>
+    enum TypeTaille : long
+    {
+        bits = 1,
+        kbits = 1000,
+        Mbits = 1000000,
+        Gbits = 1000000000,
+        ko = 8000,
+        Mo = 8000000,
+        Go = 8000000000,
     }
     #endregion
 }

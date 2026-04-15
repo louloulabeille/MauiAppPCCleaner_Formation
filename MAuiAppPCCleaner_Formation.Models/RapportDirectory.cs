@@ -15,7 +15,7 @@ namespace MauiAppPCCleaner_Formation.Models
         {
             return "Nombre de fichiers supprimer : " + NbFiles + "\n"
                         + "Nombre de répertoires supprimer : " + NbDirectory + "\n"
-                        + "Taille : " + Taille + "ko.";
+                        + "Taille : " + Taille + "Mbits.";
         }
         #endregion
     }

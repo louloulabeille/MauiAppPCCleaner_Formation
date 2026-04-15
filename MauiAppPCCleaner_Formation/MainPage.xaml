@@ -47,9 +47,9 @@
             <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
                     BackgroundColor="DarkGrey" MinimumWidthRequest="80">
                 <VerticalStackLayout Padding="0,20,0,0">
-                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent"/>
+                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
                     <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedRamCommand}"/>
+                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsRamCommand}"/>
                     <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                     <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0"/>
                     <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
@@ -75,12 +75,12 @@
                             <StackLayout Orientation="Vertical" >
                                 <Label Text="Fichiers à nettoyer:" TextColor="Black" FontSize="12" FontAttributes="Bold"
                                        VerticalTextAlignment="Start" HorizontalTextAlignment="Start" Margin="5,5"/>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout IsVisible="{Binding IsVisibleOptions}" IsEnabled="{Binding IsEnableOptions}">
                                     <!-- Cache des vignettes -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedVignettes}" />
                                     <Label Text="Cache des vignettes" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout IsVisible="{Binding IsVisibleOptions}" IsEnabled="{Binding IsEnableOptions}">
                                     <!-- Cache navigateur -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedNavigateur}" />
                                     <Label Text="Cache navigateur" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
@@ -100,7 +100,7 @@
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWinUpdate}"/>
                                     <Label Text="Fichiers Win update" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout IsVisible="{Binding IsVisibleOptions}" IsEnabled="{Binding IsEnableOptions}">
                                     <!-- Optimisation livraison -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedLivraison}"/>
                                     <Label Text="Optimisation livraison" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
@@ -115,12 +115,12 @@
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWindows}" />
                                     <Label Text="Log Windows" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout IsVisible="{Binding IsVisibleOptions}" IsEnabled="{Binding IsEnableOptions}">
                                     <!-- Cache shaders -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedShaders}"/>
                                     <Label Text="Cache shaders" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
                                 </HorizontalStackLayout>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout IsVisible="{Binding IsVisibleOptions}" IsEnabled="{Binding IsEnableOptions}">
                                     <!-- Fichier Windows.old -->
                                     <CheckBox VerticalOptions="Center" IsChecked="{Binding IsCheckedWindowsOld}"/>
                                     <Label Text="Fichier Windows.old" VerticalOptions="Center" FontSize="12" TextColor="LightGrey"/>
