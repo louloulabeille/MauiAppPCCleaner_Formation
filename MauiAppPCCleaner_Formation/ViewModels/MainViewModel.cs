@@ -97,11 +97,15 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             Gpu = InfoSystem.GetGpu();
             Version = _config.Value.Version;
 
+            // -- chargement des options s'ils sont coché ou pas
             LoadOptionsNettoyage();
 
             // - Pour éviter que l'enregistrement se fasse lors du chargement initial des checkbox
             _IsCharging = false;
 
+            // - Compare les versions entre celui installée et celui distant sur le serveur
+            // - modifice la fenêtre en conséquent
+            CheckVersion();
         }
         #endregion
 
@@ -326,6 +330,18 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// method qui check si la version correspond bien à la dernière version du logiciel
+        /// </summary>
+        private void CheckVersion()
+        {
+            MiseAJour miseAJour = new(_config);
+            if (!miseAJour.Equals(_config.Value.Version))
+            {
+
             }
         }
 
