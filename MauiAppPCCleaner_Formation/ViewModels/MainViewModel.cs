@@ -265,19 +265,19 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [RelayCommand]
         public async Task ClickedWindowsOutils()
         {
-
+            await Shell.Current.Navigation.PushAsync(new OutilsPage(new OutilsViewModel(_config)));
         }
 
         [RelayCommand]
         public async Task ClickedWindowsOptions()
         {
-
+            await Shell.Current.Navigation.PushAsync(new OptionsPage(new OptionsViewModel(_config)));
         }
 
         [RelayCommand]
         public async Task ClickedWindowsMaj()
         {
-
+            await Shell.Current.Navigation.PushAsync(new MajPage(new MajViewModel(_config)));
         }
 
         #endregion

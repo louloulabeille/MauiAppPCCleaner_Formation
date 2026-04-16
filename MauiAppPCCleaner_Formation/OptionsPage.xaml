@@ -57,7 +57,7 @@
                     <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                     <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
                          Margin="0,20,0,0" Command="{Binding ClickedWindowsMajCommand}"/>
-                    <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/> >
+                    <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
