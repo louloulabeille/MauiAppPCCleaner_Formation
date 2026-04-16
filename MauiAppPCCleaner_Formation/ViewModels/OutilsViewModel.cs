@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.VisualBasic;
 
 namespace MauiAppPCCleaner_Formation.ViewModels
 {
@@ -27,6 +28,15 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         [ObservableProperty]
         public partial string Version { get; set; }
+        #endregion
+
+        #region public properties de outils
+        [ObservableProperty]
+        public partial string LabelResultRestauration { get; set; } = string.Empty;
+
+        [ObservableProperty]
+        public partial Color TextColorRestauration { get; set; } = Colors.Black;
+
         #endregion
 
         #region Constructeur
@@ -91,6 +101,35 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             }
 
         }
+        /// <summary>
+        /// method qui va créer un poit de restauration windows
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task ClickedCreateRestauration()
+        {
+            try
+            {
+                TextColorRestauration = Colors.Black;
+                LabelResultRestauration = string.Empty;
+                dynamic? restPoint = Interaction.GetObject("winmgmts:\\\\.\\root\\default:Systemrestore");
+
+                if (restPoint is not null)
+                {
+                    if (restPoint.CreateRestorePoint("Pc Cleaner restore point", 0, 100) == 0)
+                        LabelResultRestauration = "Point de restauration créé !";
+                    else
+                        LabelResultRestauration = "Echec lors de la création du point de restauration.";
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                LabelResultRestauration = ex.Message;
+                TextColorRestauration = Colors.Red;
+            }
+        }
         #endregion
+
     }
 }

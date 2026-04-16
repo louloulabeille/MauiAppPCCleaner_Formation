@@ -60,13 +60,20 @@
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
-            <Grid BackgroundColor="LightGrey" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid BackgroundColor="White" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView>
-                    <StackLayout Orientation="Vertical">
-
+                    <StackLayout Orientation="Vertical" Padding="20,0,20,0">
+                        <Label Text="Outils" TextColor="Black" FontSize="29" FontAttributes="Bold" Margin="0,25"/>
+                        <Line  Stroke="Black" X2="5000"/>
+  
+                        <Label Text="Point de restauration" FontSize="Medium" TextColor="Black" Margin="0,15"/>
+                        <Label Text="Créer un point de restauration système pour pouvoir récupérer votre système dans un état en cas de besoin" FontSize="Micro" TextColor="Black"/>
+                        <Button BackgroundColor="SlateGrey" TextColor="LightGrey" Text="Créer un point de restauration"
+                                Command="{Binding ClickedCreateRestaurationCommand}" Margin="0,10"/>
+                        <Label Text="{Binding LabelResultRestauration}" TextColor="{Binding TextColorRestauration}"/>
                     </StackLayout>
                 </ScrollView>
             </Grid>
