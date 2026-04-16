@@ -9,6 +9,5 @@ public partial class RamPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = model;
-
     }
 }

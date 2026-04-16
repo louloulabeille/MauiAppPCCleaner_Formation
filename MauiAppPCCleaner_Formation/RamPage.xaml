@@ -4,6 +4,7 @@
              xmlns:models="clr-namespace:MauiAppPCCleaner_Formation;assembly=MauiAppPCCleaner_Formation.Models"
              xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:pr="clr-namespace:MPowerKit.ProgressRing;assembly=MPowerKit.ProgressRing"
              x:DataType="viewmodels:RamViewModel"
              x:Class="MauiAppPCCleaner_Formation.RamPage"
              Shell.NavBarIsVisible="False"
@@ -60,21 +61,61 @@
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
-            <Grid BackgroundColor="LightGrey" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid BackgroundColor="White" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView>
-                    <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Vertical" Padding="20,0,20,0">
+                        <Label Text="Optimiser la RAM" TextColor="Black" FontSize="29" FontAttributes="Bold" Margin="0,25"/>
+                        <Line  Stroke="Black" X2="5000"/>
+                        <Label Text="Utilisation de la RAM" FontSize="Medium" FontAttributes="Bold" TextColor="Black" Margin="0,15,0,10"
+                               HorizontalTextAlignment="Center" />
 
+
+                        <Grid HorizontalOptions="Fill">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Progress % -->
+                            <pr:ProgressRing HeightRequest="200"
+                                 Progress="{Binding ProgressRingValue}"
+                                 IsIndeterminate="{Binding IsIndeterminateProgressRing}"
+                                 Smooth="True"
+                                 WidthRequest="200"
+                                 StrokeLineCap="Square"
+                                 Color="SlateGrey" 
+                                 Thickness="20" />
+                            <Label Text="{Binding LabelRamPourcent}" Margin="0,80,0,0" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center"/>
+                            
+                            <!-- Tableau recap-->
+
+                            <VerticalStackLayout Grid.Column="1" Margin="0,20,0,0">
+                                <Label Text="Capacité totale :" TextColor="Black"/>
+                                <Label Text="{Binding LabelRamTotale}" TextColor="Black"/>
+                                <Label Text="Ram utilisée :" TextColor="Black"/>
+                                <Label Text="{Binding LabelRamUtilisée}" TextColor="Black"/>
+                                <Label Text="Ram libre :" TextColor="Black"/>
+                                <Label Text="{Binding LabelRamLibre}" TextColor="Black"/>
+                            </VerticalStackLayout>
+                            
+                            
+                        </Grid>
+
+                        <Button Text="Optimiser la RAM" BackgroundColor="SlateGrey" TextColor="LightGrey"
+                                Margin="0,50,0,0" Command="{Binding ClickedCleanRamCommand}"/>
+                        <Label Margin="0,10,0,0" Text="Ram Optimisée !" TextColor="Black" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" IsVisible="{Binding IsVisibleLAbelRam}"/>
                     </StackLayout>
                 </ScrollView>
             </Grid>
 
         </AbsoluteLayout>
         <Border Grid.Row="2" BackgroundColor="SlateGrey" HeightRequest="60" Padding="10,0" VerticalOptions="End">
-            <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
-       TextColor="LightGrey"></Label>
+            <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline" 
+                TextColor="LightGrey" ></Label>
         </Border>
     </Grid>
 </ContentPage>
