@@ -7,9 +7,8 @@ using System.Text;
 
 namespace MauiAppPCCleaner_Formation.ViewModels
 {
-    public partial class RamViewModel : ObservableObject
+    public partial class OptionsViewModel : ObservableObject
     {
-
         #region private readonly properties
         private readonly IOptions<Config> _config;
         #endregion
@@ -27,18 +26,18 @@ namespace MauiAppPCCleaner_Formation.ViewModels
 
         [ObservableProperty]
         public partial string Version { get; set; }
-        #endregion 
+        #endregion
 
         #region constructeur
-        public RamViewModel (IOptions<Config> config)
+        public OptionsViewModel (IOptions<Config> config)
         {
             _config = config;
             Os = InfoSystem.GetVersion();
             Cpu = InfoSystem.GetCpu();
             Gpu = InfoSystem.GetGpu();
             Version = _config.Value.Version;
-
-        } 
+        }
         #endregion
+
     }
 }

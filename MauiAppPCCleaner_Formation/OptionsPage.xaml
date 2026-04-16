@@ -2,11 +2,71 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppPCCleaner_Formation.OptionsPage"
-             Title="OptionsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:models="clr-namespace:MauiAppPCCleaner_Formation.Models;assembly=MauiAppPCCleaner_Formation.Models"
+             xmlns:viewmodels="clr-namespace:MauiAppPCCleaner_Formation.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodels:OptionsViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Barre de menu du haut -->
+        <Grid BackgroundColor="SlateGrey" Padding="10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="11*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="icons8_balais_100_color.png" Aspect="AspectFit" HeightRequest="50" Margin="10,0" VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+            <VerticalStackLayout VerticalOptions="Center" Grid.Column="1" HorizontalOptions="Start">
+                <Label Text="PC Cleaner" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" TextColor="LightGrey"/>
+                <Label Text="{Binding Version}" FontSize="14" VerticalOptions="Center"  TextColor="LightGrey"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout VerticalOptions="Center" Margin="80,0,0,0" Grid.Column="2" >
+                <Label Text="{Binding Os}" FontSize="13" TextColor="LightGrey"/>
+                <Label Text="{Binding Cpu}" FontSize="13" TextColor="LightGrey"/>
+                <Label Text="{Binding Gpu}" FontSize="13" TextColor="LightGrey"/>
+            </VerticalStackLayout>
+            <ImageButton Source="icons8_information_100.png" Aspect="AspectFit" HeightRequest="50" Grid.Column="3"
+        VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0" BackgroundColor="Transparent"
+        Command="{Binding ClickedInfoCommand}"/>
+        </Grid>
+
+        <AbsoluteLayout Grid.Row="1">
+            <!-- bar de menu de gauche -->
+            <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
+            BackgroundColor="DarkGrey" MinimumWidthRequest="80">
+                <VerticalStackLayout Padding="0,20,0,0">
+                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
+                    <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsRamCommand}"/>
+                    <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOutilsCommand}"/>
+                    <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <ImageButton Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOptionsCommand}"/>
+                    <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
+                         Margin="0,20,0,0" Command="{Binding ClickedWindowsMajCommand}"/>
+                    <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/> >
+                </VerticalStackLayout>
+            </Border>
+            <!-- Fenêtre principale -->
+
+
+        </AbsoluteLayout>
+        <Border Grid.Row="2" BackgroundColor="SlateGrey" HeightRequest="60" Padding="10,0" VerticalOptions="End">
+            <Label Text="Pc Cleaner" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextDecorations="Underline"
+                TextColor="LightGrey"></Label>
+        </Border>
+    </Grid>
 </ContentPage>
