@@ -2,6 +2,7 @@
 using MauiAppPCCleaner_Formation.Infrastructure.ExtendMethod;
 using MauiAppPCCleaner_Formation.ViewModels;
 using Microsoft.Extensions.Logging;
+using Plugin.LocalNotification;
 
 namespace MauiAppPCCleaner_Formation
 {
@@ -14,6 +15,7 @@ namespace MauiAppPCCleaner_Formation
                 .UseMauiApp<App>()
                 // Initialize the .NET MAUI Community Toolkit by adding the below line of code
                 .UseMauiCommunityToolkit()
+                .UseLocalNotification()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

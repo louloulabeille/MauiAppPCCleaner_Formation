@@ -67,8 +67,10 @@ namespace MauiAppPCCleaner_Formation.Infrastructure.System
             return string.Equals(_versionDistante.Version,version);
         }
 
-
-
+        public override string ToString()
+        {
+            return _versionDistante?.Version??string.Empty;
+        }
         #endregion
 
     }

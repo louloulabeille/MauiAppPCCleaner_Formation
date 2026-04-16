@@ -83,4 +83,19 @@
 	  <ProjectReference Include="..\MAuiAppPCCleaner_Formation.Models\MauiAppPCCleaner_Formation.Models.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="MajPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="OptionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="OutilsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RamPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

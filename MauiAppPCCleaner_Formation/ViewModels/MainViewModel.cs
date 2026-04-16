@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json;
+using Plugin.LocalNotification;
+using Plugin.LocalNotification.Core.Models;
 
 namespace MauiAppPCCleaner_Formation.ViewModels
 {
@@ -250,6 +252,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         public async Task ClickedWindowsRam()
         {
             //await Shell.Current.GoToAsync("Test");
+            await Shell.Current.Navigation.PushAsync(new RamPage(new RamViewModel()));
         }
 
         [RelayCommand]
@@ -346,13 +349,28 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         /// <summary>
         /// method qui check si la version correspond bien à la dernière version du logiciel
         /// </summary>
-        private void CheckVersion()
+        private async void CheckVersion()
         {
             MiseAJour miseAJour = new(_config);
             if (!miseAJour.Equals(_config.Value.Version))
             {
                 TextInfos = "Maj dispo !";
                 TextColorInfos = Colors.Red;
+                // Check/Request Permissions
+                if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
+                {
+                    await LocalNotificationCenter.Current.RequestNotificationPermission();
+                }
+
+                // Create and show notification
+                var notification = new NotificationRequest
+                {
+                    NotificationId = 100,
+                    Title = "Nouvelle mise à jour",
+                    Description = $"Nouvelle version {miseAJour.ToString()} à télécharger.",
+                    ReturningData = "custom-data" // Data to return when notification is tapped
+                };
+                await LocalNotificationCenter.Current.Show(notification);
             }
         }
 
