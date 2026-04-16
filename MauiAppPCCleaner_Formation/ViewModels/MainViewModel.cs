@@ -255,7 +255,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         [RelayCommand]
         public async Task ClickedWindowsNettoyage()
         {
-            // recharge la page ne pas faire Current.GoToSync sinon plantage il s'appelle lui même
+            // recharge la page ne pas faire Current.GoToSync sinon plantage quand il s'appelle lui même
             await Shell.Current.Navigation.PushAsync(new MainPage(new MainViewModel(_config)));
         }
 
