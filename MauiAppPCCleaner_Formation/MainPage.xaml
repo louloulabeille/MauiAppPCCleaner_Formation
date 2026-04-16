@@ -48,7 +48,7 @@
                     BackgroundColor="DarkGrey" MinimumWidthRequest="80">
                 <VerticalStackLayout Padding="0,20,0,0">
                     <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
-                    <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center" FontAttributes="Bold" TextDecorations="Underline"/>
                     <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsRamCommand}"/>
                     <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                     <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOutilsCommand}"/>

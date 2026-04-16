@@ -54,14 +54,23 @@
                     <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOutilsCommand}"/>
                     <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                     <ImageButton Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOptionsCommand}"/>
-                    <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
+                    <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center" FontAttributes="Bold" TextDecorations="Underline"/>
                     <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
                          Margin="0,20,0,0" Command="{Binding ClickedWindowsMajCommand}"/>
                     <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
+            <Grid BackgroundColor="LightGrey" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ScrollView>
+                    <StackLayout Orientation="Vertical">
 
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
 
         </AbsoluteLayout>
         <Border Grid.Row="2" BackgroundColor="SlateGrey" HeightRequest="60" Padding="10,0" VerticalOptions="End">
