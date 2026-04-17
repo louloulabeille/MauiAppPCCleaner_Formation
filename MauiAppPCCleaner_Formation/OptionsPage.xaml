@@ -9,7 +9,7 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="White"
              >
-    <Grid>
+    <Grid MinimumWidthRequest="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="7*"/>
@@ -46,28 +46,56 @@
             <!-- bar de menu de gauche -->
             <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
             BackgroundColor="DarkGrey" MinimumWidthRequest="80">
-                <VerticalStackLayout Padding="0,20,0,0">
-                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
+                <VerticalStackLayout Padding="0,20,0,0" Spacing="5">
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
                     <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsRamCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_ram_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsRamCommand}"/>
                     <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOutilsCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_outil_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsOutilsCommand}"/>
                     <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOptionsCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsOptionsCommand}"/>
                     <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center" FontAttributes="Bold" TextDecorations="Underline"/>
-                    <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
-                         Margin="0,20,0,0" Command="{Binding ClickedWindowsMajCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
+                        Command="{Binding ClickedWindowsMajCommand}"/>
                     <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
                 </VerticalStackLayout>
             </Border>
             <!-- Fenêtre principale -->
-            <Grid BackgroundColor="LightGrey" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid BackgroundColor="White" MinimumHeightRequest="485" AbsoluteLayout.LayoutBounds="1,0,0.925,1" AbsoluteLayout.LayoutFlags="All">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView>
-                    <StackLayout Orientation="Vertical">
-
+                    <StackLayout Orientation="Vertical" Padding="20,0,20,0">
+                        <Label Text="Paramètres" TextColor="Black" FontSize="29" FontAttributes="Bold" Margin="0,25"/>
+                        <Line  Stroke="Black" X2="5000"/>
+                        <Label Text="Site web:" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Text="Site web PC Cleaner" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="PCCleaner"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Réseaux sociaux:" TextColor="Black" FontAttributes="Bold" Margin="0,5,0,0"/>
+                        <Label Text="Facebook" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="Facebook"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Twitter - X" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,5,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="Twitter"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Youtube" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,5,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="Youtube"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="Github" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,5,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="GitHub"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                 </ScrollView>
             </Grid>

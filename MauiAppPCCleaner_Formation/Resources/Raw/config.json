@@ -1,8 +1,13 @@
 {
   "Config": {
     "UrlInfo": "https://www.anthony-cardinale.fr/tools/pccleaner/",
+    "UrlFacebook": "https://fr-fr.facebook.com/",
     "Version": "v0.0.1",
     "SaveOptionNettoyage": "OptionsNettoyage.json",
-    "UrlVersion": "http://louloulabeille.alwaysdata.net/version/version.json"
+    "UrlVersion": "http://louloulabeille.alwaysdata.net/version/version.json",
+    "UrlTwitter": "https://x.com/twitter",
+    "UrlYoutube": "https://www.youtube.com/YouTube/fr-fr",
+    "UrlGitHub": "https://github.com/louloulabeille/MauiAppPCCleaner_Formation"
+
   }
 }

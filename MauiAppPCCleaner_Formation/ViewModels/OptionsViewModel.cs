@@ -17,25 +17,26 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #region public properties informations du header ObservableProperty
         // -- information du header
         [ObservableProperty]
-        public partial string Os { get; set; }
+        public partial string Os { get; set; } = InfoSystem.GetVersion();
 
         [ObservableProperty]
-        public partial string Cpu { get; set; }
+        public partial string Cpu { get; set; } = InfoSystem.GetCpu();
 
         [ObservableProperty]
-        public partial string Gpu { get; set; }
+        public partial string Gpu { get; set; } = InfoSystem.GetGpu();
 
         [ObservableProperty]
         public partial string Version { get; set; }
+        #endregion
+
+        #region public properties options 
+
         #endregion
 
         #region constructeur
         public OptionsViewModel (IOptions<Config> config)
         {
             _config = config;
-            Os = InfoSystem.GetVersion();
-            Cpu = InfoSystem.GetCpu();
-            Gpu = InfoSystem.GetGpu();
             Version = _config.Value.Version;
         }
         #endregion
@@ -91,6 +92,53 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             }
 
         }
+        #endregion
+
+        #region public method command Options
+        /// <summary>
+        /// prend en paramètre url ou autre pour connaitre le lien qu'il faut ouvrir
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task ClickedWeb(string url)
+        {
+            try
+            {
+                switch (url)
+                {
+                    case "PCCleaner":
+                        await ClickedInfo();
+                        break;
+                    case "Twitter":
+                        Uri uriX = new(_config.Value.UrlTwitter ?? "https://x.com/");
+                        await Browser.Default.OpenAsync(uriX, BrowserLaunchMode.SystemPreferred);
+                        break;
+                    case "Youtube":
+                        Uri uriYou = new(_config.Value.UrlYoutube ?? "https://www.youtube.com/YouTube/fr-fr");
+                        await Browser.Default.OpenAsync(uriYou, BrowserLaunchMode.SystemPreferred);
+                        break;
+                    case "GitHub":
+                        Uri uriGit = new(_config.Value.UrlGitHub ?? "https://github.com/louloulabeille/MauiAppPCCleaner_Formation");
+                        await Browser.Default.OpenAsync(uriGit, BrowserLaunchMode.SystemPreferred);
+                        break;
+                    default:
+                        Uri uri = new(_config.Value.UrlFacebook?? "https://fr-fr.facebook.com/");
+                        await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+                        break;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region private method
+
         #endregion
 
     }

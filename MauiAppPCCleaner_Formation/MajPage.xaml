@@ -45,17 +45,17 @@
             <!-- bar de menu de gauche -->
             <Border AbsoluteLayout.LayoutBounds="0,0,0.075,1" AbsoluteLayout.LayoutFlags="All" StrokeThickness="0"
             BackgroundColor="DarkGrey" MinimumWidthRequest="80">
-                <VerticalStackLayout Padding="0,20,0,0">
-                    <ImageButton Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
+                <VerticalStackLayout Padding="0,20,0,0" Spacing="5">
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_broom_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsNettoyageCommand}"/>
                     <Label Text="Nettoyage" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_ram_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsRamCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_ram_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsRamCommand}"/>
                     <Label Text="Ram" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_outil_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOutilsCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_outil_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsOutilsCommand}"/>
                     <Label Text="Outils" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Margin="0,20,0,0" Command="{Binding ClickedWindowsOptionsCommand}"/>
-                    <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center"/>
-                    <ImageButton Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent" 
-                        Margin="0,20,0,0" Command="{Binding ClickedWindowsMajCommand}"/>
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_engrenage_100.png" BackgroundColor="Transparent" Command="{Binding ClickedWindowsOptionsCommand}"/>
+                    <Label Text="Options" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center" />
+                    <ImageButton MaximumWidthRequest="50" MaximumHeightRequest="50" Source="icons8_mises_a_jour_disponibles_100.png" BackgroundColor="Transparent"
+                        Command="{Binding ClickedWindowsMajCommand}"/>
                     <Label Text="Maj" TextColor="Black" FontSize="14" HorizontalTextAlignment="Center" FontAttributes="Bold" TextDecorations="Underline"/>
                 </VerticalStackLayout>
             </Border>
