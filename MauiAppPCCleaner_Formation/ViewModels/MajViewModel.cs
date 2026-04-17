@@ -29,6 +29,29 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         public partial string Version { get; set; }
         #endregion
 
+        #region public properties de Maj
+        // -  ProgressBar
+        [ObservableProperty]
+        public partial double ProgressRingValue { get; set; } = 0;
+        [ObservableProperty]
+        public partial bool IsIndeterminateProgressRing { get; set; } = true;
+        [ObservableProperty]
+        public partial bool IsvisibleRechercheMaj { get; set; } = true;
+
+
+        // - Message à afficher pas de Maj
+        [ObservableProperty]
+        public partial bool IsVisibleNotMaj { get; set; } = false;
+        
+        [ObservableProperty]    // -- mettre à jour avec la version distante
+        public partial string VersionActuelleApp { get; set; } = "Version actuelle : ";
+
+        // - Message mise a jour a faire
+        [ObservableProperty]
+        public partial bool IsVisibleUpdateTitle { get; set; } = false;
+
+        #endregion
+
         #region constructeur
         public MajViewModel (IOptions<Config> config)
         {
@@ -37,6 +60,9 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             Cpu = InfoSystem.GetCpu();
             Gpu = InfoSystem.GetGpu();
             Version = _config.Value.Version;
+
+            Init();
+            Update();
         }
         #endregion
 
@@ -93,5 +119,77 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         }
 
         #endregion
+
+        #region public method Command Maj
+
+        /// <summary>
+        /// ouvre lien Url
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task OpenUrl()
+        {
+            try
+            {
+                Uri uriX = new(_config.Value.UrlInfo);
+                await Browser.Default.OpenAsync(uriX, BrowserLaunchMode.SystemPreferred);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
+        /// <summary>
+        /// Method quji va télécharger la derniere mise a jour
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task DownloadMaj()
+        {
+            try
+            {
+                Uri uriX = new("http://louloulabeille.alwaysdata.net/version/K-Lite_Codec_Pack_1966_Standard.exe");
+                await Browser.Default.OpenAsync(uriX, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+        #endregion
+
+        #region private method
+        /// <summary>
+        /// intialise certains champs au démarage
+        /// </summary>
+        private void Init()
+        {
+            VersionActuelleApp += _config.Value.Version;
+        }
+
+        /// <summary>
+        /// Vérifie si la mise jour est Ok
+        /// </summary>
+        private async void Update() {
+
+            MiseAJour miseAJour = new(_config);
+
+            if(miseAJour.Equals(_config.Value.Version))
+            {
+                IsVisibleNotMaj = true;
+            }
+            else
+            {
+                IsVisibleUpdateTitle = true;
+            }
+            IsIndeterminateProgressRing = false;
+            IsvisibleRechercheMaj = false;
+
+        }
+        #endregion
+
     }
 }
