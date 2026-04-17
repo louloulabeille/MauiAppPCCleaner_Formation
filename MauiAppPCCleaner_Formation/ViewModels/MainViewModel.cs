@@ -374,21 +374,27 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             {
                 TextInfos = "Maj dispo !";
                 TextColorInfos = Colors.Red;
-                // Check/Request Permissions
-                if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
-                {
-                    await LocalNotificationCenter.Current.RequestNotificationPermission();
-                }
 
-                // Create and show notification
-                var notification = new NotificationRequest
+                /// - notification qui ne marche que pour Ios et Android
+                if (Preferences.Get("CheckedNotification", false))
                 {
-                    NotificationId = 100,
-                    Title = "Nouvelle mise à jour",
-                    Description = $"Nouvelle version {miseAJour.ToString()} à télécharger.",
-                    ReturningData = "custom-data" // Data to return when notification is tapped
-                };
-                await LocalNotificationCenter.Current.Show(notification);
+                    // Check/Request Permissions
+                    if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
+                    {
+                        await LocalNotificationCenter.Current.RequestNotificationPermission();
+                    }
+
+                    // Create and show notification
+                    var notification = new NotificationRequest
+                    {
+                        NotificationId = 100,
+                        Title = "Nouvelle mise à jour",
+                        Description = $"Nouvelle version {miseAJour.ToString()} à télécharger.",
+                        ReturningData = "custom-data" // Data to return when notification is tapped
+                    };
+                    await LocalNotificationCenter.Current.Show(notification);
+                }
+                
             }
         }
 

@@ -31,9 +31,10 @@ namespace MauiAppPCCleaner_Formation
             builder.Logging.AddDebug();
 #endif
 
-            // -- ajout par injection de dépendance des viewmodels et des pages
-            builder.Services.AddTransient<MainPage>();
-            builder.Services.AddTransient<MainViewModel>();
+            // -- ajout par injection de dépendance des viewmodels et des pages dans les services
+            /*builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainViewModel>();*/
+            builder.Services.AddViewModelsPages();
 
             // -- ajout d'un system de sauvegarde 
             

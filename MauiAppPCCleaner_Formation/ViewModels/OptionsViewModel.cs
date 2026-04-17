@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace MauiAppPCCleaner_Formation.ViewModels
 {
@@ -13,6 +14,7 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #region private readonly properties
         private readonly IOptions<Config> _config;
         #endregion
+
 
         #region public properties informations du header ObservableProperty
         // -- information du header
@@ -30,7 +32,13 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #endregion
 
         #region public properties options 
+        [ObservableProperty]
+        public partial bool IsCheckedNotification { get; set; } = false;
 
+        [ObservableProperty]
+        public partial List<string> ListWindows { get; set; } = [];
+        [ObservableProperty]
+        public partial string SelectedWindows { get; set; } = "Nettoyage";
         #endregion
 
         #region constructeur
@@ -38,6 +46,8 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         {
             _config = config;
             Version = _config.Value.Version;
+            ChargingOptions();
+            ChargingWindows();
         }
         #endregion
 
@@ -95,6 +105,9 @@ namespace MauiAppPCCleaner_Formation.ViewModels
         #endregion
 
         #region public method command Options
+
+        //public ICommand OpenLienUrl => new Command<string>(async (url) => await Launcher.OpenAsync(url));
+
         /// <summary>
         /// prend en paramètre url ou autre pour connaitre le lien qu'il faut ouvrir
         /// </summary>
@@ -135,9 +148,65 @@ namespace MauiAppPCCleaner_Formation.ViewModels
             }
         }
 
+        /// <summary>
+        /// enregistrement de l'options de mise en place de la notification
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        [RelayCommand]
+        public void CheckedNotification(bool path)
+        {
+            try
+            {
+                Preferences.Set("CheckedNotification", path);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Methode implémenter dans toolkit sur event handler selectedonchanged
+        /// </summary>
+        /// <param name="value"></param>
+        [RelayCommand]
+        partial void OnSelectedWindowsChanged(string value)
+        {
+            try
+            {
+                Preferences.Set("DefaultWindows", value);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         #endregion
 
         #region private method
+        /// <summary>
+        /// method qui charge les options à l'ouverture de la fenêtre
+        /// </summary>
+        private void ChargingOptions()
+        {
+            IsCheckedNotification = Preferences.Get("CheckedNotification", false);
+        }
+
+        /// <summary>
+        /// method qui charge les fenêtre existante dans l'application
+        /// </summary>
+        private void ChargingWindows()
+        {
+            ListWindows.Add("Nettoyage");
+            ListWindows.Add("Ram");
+            ListWindows.Add("Outils");
+            ListWindows.Add("Options");
+            ListWindows.Add("Maj");
+
+            // -- sélectionne la page par défaut dans la liste
+            SelectedWindows = Preferences.Get("DefaultWindows", "Nettoyage");
+        }
 
         #endregion
 

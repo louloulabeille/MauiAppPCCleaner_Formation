@@ -71,7 +71,7 @@
                         <Line  Stroke="Black" X2="5000"/>
                         <Label Text="Site web:" TextColor="Black" FontAttributes="Bold"/>
                         <Label Text="Site web PC Cleaner" TextColor="SlateGrey" TextDecorations="Underline" Margin="10,0,0,0">
-                            <Label.GestureRecognizers>
+                            <Label.GestureRecognizers>  <!-- Systeme pour détecter un click ou le doigt -->
                                 <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="PCCleaner"/>
                             </Label.GestureRecognizers>
                         </Label>
@@ -96,6 +96,20 @@
                                 <TapGestureRecognizer Command="{Binding ClickedWebCommand}" CommandParameter="GitHub"/>
                             </Label.GestureRecognizers>
                         </Label>
+                        <!-- Parametrage -->
+                        <Label Text="Réglages :" TextColor="Black" FontAttributes="Bold" Margin="0,15,0,0"/>
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <CheckBox Color="SlateGrey" Command="{Binding CheckedNotificationCommand}" IsChecked="{Binding IsCheckedNotification}"
+                                      x:Name="CheckedNotification" CommandParameter="{Binding Source={x:Reference CheckedNotification},Path=IsChecked}"/>
+                            <Label Text="Afficher une notification en cas de mise a jour disponible." TextColor="Black"
+                                   VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                        <HorizontalStackLayout Spacing="8">
+                            <Picker Title="" ItemsSource="{Binding ListWindows}" TextColor="LightGrey" BackgroundColor="SlateGrey"
+                                    SelectedItem="{Binding SelectedWindows}" >
+                            </Picker>
+                            <Label Text="Fenêtre par défaut" TextColor="Black" VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
                     </StackLayout>
                 </ScrollView>
             </Grid>

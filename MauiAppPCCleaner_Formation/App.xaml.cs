@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MauiAppPCCleaner_Formation.Infrastructure.System;
+using MauiAppPCCleaner_Formation.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace MauiAppPCCleaner_Formation
 {
